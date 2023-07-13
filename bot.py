@@ -1,6 +1,11 @@
 import search_recipe_by_ingredient
 
-search_recipe_by_ingredient.search_recipe_by_ingredient("kilogramo", "recipe_results.txt")
+
+print("¡Hola! escribe un ingrediente y te daré recetas mexicanas basados en eso")
 
 while True: 
-    print("¡Hola! escribe un ingrediente y te daré recetas mexicanas basados en eso")
+    ingrediente = input("Ingrediente: ")
+    search_recipe_by_ingredient.search_recipe_by_ingredient(ingrediente, "recipe_results.txt")
+    with open("recipe_results.txt") as results:
+        results = results.read()
+        print(results)
