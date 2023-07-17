@@ -1,21 +1,24 @@
 import csv
 from django.shortcuts import render
 from .models import Recipe
+from django.db.models import Q
+import random
 
 def home(request):
     return render(request, 'recetas/index.html')
 
 def search(request):
-    ingredient = request.POST.get('ingredient')
-    results = Recipe.objects.filter(ingredients__icontains=ingredient)
+    if request.method == 'POST':
+        ingredient = request.POST['ingredient']
+        recipes = Recipe.objects.filter(ingredients__icontains=ingredient)
 
-    if not Recipe.objects.exists():
-        with open('data/recipes.csv') as csvfile:
-            reader = csv.DictReader(csvfile)
-            recipes = []
-            for row in reader:
-                recipe = Recipe(title=row['Titulo'], ingredients=row['Ingredientes'], instructions=row['Elaboracion'])
-                recipes.append(recipe)
-            Recipe.objects.bulk_create(recipes)
+        # Get three random recipes
+        random_recipes = random.sample(list(recipes), 3)
 
-    return render(request, 'recetas/search.html', {'ingredient': ingredient, 'results': results})
+        context = {
+            'ingredient': ingredient,
+            'recipes': random_recipes,
+        }
+        return render(request, 'recetas/search.html', context)
+
+    return render(request, 'recetas/search.html')

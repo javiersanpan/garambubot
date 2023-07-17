@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Results</title>
-</head>
-<body>
-    <h1>Search Results for "{{ ingredient }}"</h1>
-    <ul>
-        {% for recipe in results %}
-            <li>{{ recipe.title }}</li>
-        {% empty %}
-            <li>No recipes found.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'recetas/base.html' %}
+
+{% block content %}
+  <h2>Search Results for "{{ ingredient }}"</h2>
+
+  <ul>
+    {% for recipe in recipes %}
+      <li>
+        <h3>{{ recipe.title }}</h3>
+        <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
+        <p><strong>Preparation:</strong> {{ recipe.instructions }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
