@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ ingredient }}"</h1>
+    <ul>
+        {% for recipe in results %}
+            <li>{{ recipe.title }}</li>
+        {% empty %}
+            <li>No recipes found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

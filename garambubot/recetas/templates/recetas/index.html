@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Search</title>
+</head>
+<body>
+    <h1>Recipe Search</h1>
+    <form action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="ingredient" placeholder="Enter an ingredient">
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
