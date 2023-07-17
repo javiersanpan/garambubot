@@ -1,6 +1,5 @@
 import search_recipe_by_ingredient
 
-
 print("¡Hola! escribe un ingrediente y te daré recetas mexicanas basados en eso")
 
 while True: 

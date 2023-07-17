@@ -16,9 +16,6 @@ def search_recipe_by_ingredient(ingredient, output_file):
     df.set_index("index", inplace=True)
     # Set the "index" column as the index of the DataFrame
     
-    df.head(50)
-    # Display the first 50 rows of the DataFrame
-    
     matching_recipes = []
     # Initialize an empty list to store the matching recipes
     
