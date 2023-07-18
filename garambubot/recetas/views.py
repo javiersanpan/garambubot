@@ -1,7 +1,5 @@
-import csv
 from django.shortcuts import render
 from .models import Recipe
-from django.db.models import Q
 import random
 
 def home(request):
@@ -12,7 +10,6 @@ def search(request):
         ingredient = request.POST['ingredient']
         recipes = Recipe.objects.filter(ingredients__icontains=ingredient)
 
-        # Get three random recipes
         random_recipes = random.sample(list(recipes), 3)
 
         context = {
